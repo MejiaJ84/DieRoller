@@ -11,6 +11,13 @@ namespace DieRoller
     /// </summary>
     public class Die
     {
+        private static Random _random; // static random member, so Random isnt constructed every time roll is called
+
+        static Die()
+        {
+            _random = new Random();
+        }
+
         /// <summary>
         /// Creates the die and rolls it to 
         /// generate a random number
@@ -41,8 +48,7 @@ namespace DieRoller
             if (!IsHeld)
             {
                 // Generate random number
-                Random random = new();
-                byte newValue = (byte)random.Next(1, 7); // upper bound is exclusive, so it will return a 6 at max
+                byte newValue = (byte)_random.Next(1, 7); // upper bound is exclusive, so it will return a 6 at max
             
                 // Set to face value
                 FaceValue = newValue;
