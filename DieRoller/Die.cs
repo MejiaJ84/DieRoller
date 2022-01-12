@@ -12,9 +12,18 @@ namespace DieRoller
     public class Die
     {
         /// <summary>
+        /// Creates the die and rolls it to 
+        /// generate a random number
+        /// </summary>
+        public Die()
+        {
+            Roll();
+        }
+
+        /// <summary>
         /// The current face up value of the die.
         /// </summary>
-        public byte FaceValue { get; set; } // todo: setting facevalue should not be allowed
+        public byte FaceValue { get; private set; } // set is private so facevalue can't be change by user
 
         /// <summary>
         /// True if the die is currently held
@@ -30,7 +39,7 @@ namespace DieRoller
         public byte Roll()
         {
             // Generate random number
-            Random random = new Random();
+            Random random = new();
             byte newValue = (byte)random.Next(1, 7); // upper bound is exclusive, so it will return a 6 at max
             
             // Set to face value
