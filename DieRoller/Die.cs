@@ -11,7 +11,7 @@ namespace DieRoller
     /// </summary>
     public class Die
     {
-        private static Random _random; // static random member, so Random isnt constructed every time roll is called
+        private static readonly Random _random; // static random member, so Random isnt constructed every time roll is called
 
         static Die()
         {
